@@ -1,12 +1,18 @@
 # Code testing
 
+Started at the IETF Hackathon (IETF 123 in Madrid)
+
+## Creating the database
+
+Requires a running PostgreSQL
+
+psql -f ./create.sql registry
+
 ## Running the server
 
 ./test-server.py
 
 ### Testing it:
-
-See also docs.md
 
 curl --header @headers.txt http://localhost:8080/domains/nic.example
 curl --header @headers.txt --request PUT --user 2:qwerty --data '{"holder": 2}'  http://localhost:8080/domains/durand.example
@@ -25,24 +31,4 @@ curl -i --header @headers.txt --request PATCH --user 2:qwerty --data '{"change":
 Transfer:
 curl --header @headers.txt  --request POST --user 3:bazinga http://localhost:8080/domains/durand.example/transfer
 curl --header @headers.txt  --request POST --user 2:qwerty http://localhost:8080/domains/durand.example/transfer/approval
-
-## Drafts 
-draft-rpp-core https://github.com/SIDN/ietf-rpp-core/
-
-PUT and not POST
-   Example Domain Create request:
-   POST /rpp/v1/domains HTTP/2
-   Host: rpp.example.nl
-   Authorization: Bearer <token>
-   Accept: application/rpp+json
-   Content-Type: application/rpp+json
-   Accept-Language: en
-   Content-Length: 220
-This is not very REST (id should be in the URL)
-
-   *  *RPP specific error codes and relation to HTTP error codes:*
-      Defining RPP-specific error codes while relating them to standard
-      HTTP error codes for consistency.
-This is not what wullink is doing. See also rfequirements    *R2.4.* RPP MUST use the existing HTTP status codes and MUST define
-   application level status codes and map these to HTTP status codes.
 
