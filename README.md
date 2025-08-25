@@ -9,12 +9,13 @@ Started at the IETF Hackathon (IETF 123 in Madrid)
 Requires a running PostgreSQL
 
 ```
+createdb registry
 psql -f ./create.sql registry
 ```
 
 ## Running the server
 
-TODO: require some Python modules
+You will need two Python modules, [psycopg2](https://pypi.org/project/psycopg2/) and [jsonschema](https://pypi.org/project/jsonschema/).
 
 ``` 
 ./test-server.py
@@ -24,7 +25,7 @@ TODO: require some Python modules
 
 ``` 
 curl --header @headers.txt http://localhost:8080/domains/nic.example
-curl --header @headers.txt --request PUT --user 2:qwerty --data '{"holder": 2}'  http://localhost:8080/domains/durand.example
+curl --header @headers.txt --request PUT --user 2:qwerty --data '{"holder": 2, "tech": 2, "admin": 2}'  http://localhost:8080/domains/durand.example
 
 curl --header @headers.txt http://localhost:8080/entities/2
 curl --header @headers.txt --request PUT --data '{"@type": "Card", "name": {"components": [{"kind": "given","value": "Jean"},{"kind": "surname","value": "Bon"}]}}'  http://localhost:8080/entities/
