@@ -1,0 +1,21 @@
+{
+    "$schema": "https://json-schema.org/draft/2020-12/schema",
+    "title": "Domain name",
+    "type": "object",
+    "properties": {
+	"holder": {
+	    "description": "Holder (registrant) handle",
+	    "type": "integer"
+	},
+	"tech": {
+	    "description": "Technical contact handle",
+	    "type": "integer"
+	},
+	"admin": {
+	    "description": "Administrative contact handle",
+	    "type": "integer"
+	}
+    },
+    "required": ["holder", "tech", "admin"]
+}
+
